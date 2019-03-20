@@ -1,0 +1,31 @@
+//批量处理文件的方法
+//旋转，对比度，剪切等
+
+import glob
+import os
+
+from skimage import io,exposure
+
+
+os.chdir(r"H:\beixin")
+a="H:\\beixin\\"
+i=0;
+for file_name in glob.glob("*.jpg"):
+    
+    img=io.imread(a+file_name) 
+   
+   
+   
+    gam1=exposure.adjust_gamma(img,3)//提高对比度
+   
+    
+    
+    io.imsave('H://beixin1//'+str(i)+'.jpg',gam1)
+    i+=1
+    
+///////////////////////////////////////////////////////////    
+    img=io.imread(a+file_name) //剪切
+    roi=img[70:210,70:210,:]
+    
+/////////////////////////////////////////////////////////
+    roi1=transform.rotate(img,60)//旋转
